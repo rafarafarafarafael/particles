@@ -55,6 +55,6 @@ void Particle::draw(){
         ofSetColor(color);
         
         // draw particle
-        ofCircle(pos, size);
+        ofDrawCircle(pos.x, pos.y, size);
     }
 }
