@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Particles.h"
+#include "Params.h"
 
 class ofApp : public ofBaseApp{
 

@@ -24,12 +24,46 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    // compute dt
+    float time = ofGetElapsedTimef();
+    float dt = ofClamp(time - time0, 0, 0.1);
+    time0 = time;
+    
+    // if particle no active, activate it
+    if(!p.live){
+        p.setup();
+    }
+    
+    // update the particle
+    p.update(dt);
 
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-
+    // set background white
+    ofBackground(255);
+    
+    // begin drawing to fbo
+    fbo.begin();
+    
+    // draw semi-transparent white rectangle to fade particle trail
+    ofEnableAlphaBlending();
+    float alpha = (1 - history) * 255;
+    ofSetColor(255, 255, 255, alpha);
+    ofFill();
+    ofDrawRectangle(ofPoint(0, 0), ofGetWidth(), ofGetHeight());
+    ofDisableAlphaBlending();
+    
+    // draw particle
+    ofFill();
+    p.draw();
+    
+    fbo.end();
+    
+    // draw buffer to screen
+    ofSetColor(255, 255, 255);
+    fbo.draw(0, 0);
 }
 
 //--------------------------------------------------------------
