@@ -8,6 +8,8 @@
 
 #include "Params.h"
 
+Params param;
+
 void Params::setup(){
     eCenter = ofPoint(ofGetWidth()/2, ofGetHeight()/2);
     eRad = 50;

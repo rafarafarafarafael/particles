@@ -1,5 +1,6 @@
 #include "ofApp.h"
 
+
 //--------------------------------------------------------------
 void ofApp::setup(){
     // set frame rate
@@ -17,7 +18,7 @@ void ofApp::setup(){
     
     // set up parameters
     param.setup();
-    history  = 0.995;
+    history  = 0.95;
     
     time0 = ofGetElapsedTimef();
 }
